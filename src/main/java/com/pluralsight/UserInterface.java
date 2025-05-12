@@ -1,9 +1,12 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
     private Dealership dealership;
+    private ArrayList<Vehicle> inventory;
+    Scanner scanner = new Scanner(System.in);
 
     private void init(){
         DealershipFileManager dfm = new DealershipFileManager();
@@ -17,7 +20,7 @@ public class UserInterface {
 
         while (running){
             System.out.println("Welcome to "+dealership.getName());
-            System.out.println("Choose an option");
+            System.out.println("Menu");
             System.out.println("1.) Find Vehicle within a price range");
             System.out.println("2.) Find Vehicle by make/model");
             System.out.println("3.) Find Vehicle by year");
@@ -28,11 +31,13 @@ public class UserInterface {
             System.out.println("8.) Add a vehicle");
             System.out.println("9.) Remove a vehicle");
             System.out.println("99.) Quit");
+            System.out.print("Choose an option: ");
 
             Integer input = scanner.nextInt();
 
             switch (input){
                 case 1:
+                    processGetByPriceRequest();
                     break;
                 case 2:
                     break;
@@ -61,8 +66,20 @@ public class UserInterface {
 
         }
     }
+    private void displayVehicle(){
+        for (Vehicle vehicle : inventory) {
+            System.out.println(vehicle);
+        }
+    }
 
-    private void processGetByPriceRequest(){}
+    private void processGetByPriceRequest(){
+        System.out.println("Enter a min price: ");
+        double minPriceInput = Double.parseDouble(scanner.nextLine());
+        System.out.println("Enter a max price: ");
+        double maxPriceInput = Double.parseDouble(scanner.nextLine());
+
+
+    }
 
     private void processGetByMakeModelRequest(){}
 
