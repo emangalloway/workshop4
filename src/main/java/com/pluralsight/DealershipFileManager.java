@@ -7,7 +7,7 @@ import java.io.FileWriter;
 
 public class DealershipFileManager {
 
-    public void getDealership(){
+    public Dealership getDealership(){
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("dealership.csv"));
             String firstLine = bufferedReader.readLine();
@@ -34,15 +34,16 @@ public class DealershipFileManager {
                     dealership.addVehicle(vehicle);
                     bufferedReader.close();
                 }
-
+                return dealership;
 
         }catch (Exception e){
-            System.out.println("An error has occured");
+            System.out.println("An error has occurred");
+            return null;
         }
 
     }
 
-    public  void saveDealership(Dealership){
+    public  void saveDealership(dealership){
         try {
 
         }catch (Exception e){
