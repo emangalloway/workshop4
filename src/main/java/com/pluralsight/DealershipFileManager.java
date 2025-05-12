@@ -31,6 +31,8 @@ public class DealershipFileManager {
                     Double price = Double.parseDouble(parts[7]);
 
                     Vehicle vehicle = new Vehicle(vin,year,make,model,vehicleType,color,odometer,price);
+                    dealership.addVehicle(vehicle);
+                    bufferedReader.close();
                 }
 
 
@@ -41,6 +43,11 @@ public class DealershipFileManager {
     }
 
     public  void saveDealership(Dealership){
+        try {
+
+        }catch (Exception e){
+            System.err.println("An error has occurred");
+        }
 
     }
 
