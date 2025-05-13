@@ -59,9 +59,28 @@ public class Dealership {
             }
         }return results;
     }
-    public ArrayList<Vehicle> getVehicleByMileage(double min,double max){}
-    public ArrayList<Vehicle> getVehicleByType(String vehicleType){}
-    public ArrayList<Vehicle> getAllVehicle(){}
+    public ArrayList<Vehicle> getVehicleByMileage(double min,double max){
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getOdometer() >= min && vehicle.getOdometer() <= max){
+                results.add(vehicle);
+            }
+        }return results;
+    }
+    public ArrayList<Vehicle> getVehicleByType(String vehicleType){
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            if (vehicle.getVehicleType().equalsIgnoreCase(vehicleType));
+            results.add(vehicle);
+        }return results;
+    }
+    public ArrayList<Vehicle> getAllVehicle(){
+        ArrayList<Vehicle> results = new ArrayList<>();
+        for (Vehicle vehicle : inventory) {
+            results.add(vehicle);
+
+        }return results;
+    }
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
     }
