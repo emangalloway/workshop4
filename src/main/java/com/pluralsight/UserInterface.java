@@ -148,6 +148,8 @@ public class UserInterface {
             String priceInput = scanner.nextLine();
             double price = Double.parseDouble(priceInput);
             dealership.addVehicle(new Vehicle(vin,year,make,model,type,color,mile,price));
+            DealershipFileManager dfs = new DealershipFileManager();
+            dfs.saveDealership(dealership);
         }
 
         private void removeVehicleRequest () {
@@ -159,5 +161,7 @@ public class UserInterface {
                     dealership.removeVehicle(vehicle);
                 }
             }
+            DealershipFileManager dfs = new DealershipFileManager();
+            dfs.saveDealership(dealership);
         }
     }
