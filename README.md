@@ -43,7 +43,7 @@ Follow these steps to get your application running within IntelliJ IDEA:
 - GitBash
 
 ## Demo
-
+![WorkShop4Dealership.java2025-05-1310-20-04-ezgif.com-video-to-gif-converter.gif](WorkShop4Dealership.java2025-05-1310-20-04-ezgif.com-video-to-gif-converter.gif)
 
 
 ## Future Work
