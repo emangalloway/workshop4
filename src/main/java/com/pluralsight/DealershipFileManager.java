@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
 
 public class DealershipFileManager {
 
@@ -32,7 +33,6 @@ public class DealershipFileManager {
 
                     Vehicle vehicle = new Vehicle(vin,year,make,model,vehicleType,color,odometer,price);
                     dealership.addVehicle(vehicle);
-                    bufferedReader.close();
                 }
                 return dealership;
 
@@ -43,9 +43,21 @@ public class DealershipFileManager {
 
     }
 
-    public  void saveDealership(dealership){
+    public void saveDealership(Dealership dealership){
+        ArrayList<Vehicle> inventory = dealership.getAllVehicles();
         try {
-
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("dealership.csv"));
+            StringBuilder dealershipInfo = new StringBuilder();//String Builder for dealership information
+            dealershipInfo.append(dealership.getName()).append("|");
+            dealershipInfo.append(dealership.getAddress()).append("|");
+            dealershipInfo.append(dealership.getPhone()).append("|");
+            bufferedWriter.write(dealershipInfo.toString());
+            bufferedWriter.newLine();
+            for (Vehicle vehicle : inventory) {
+                bufferedWriter.write(vehicle.toString());
+                bufferedWriter.newLine();
+                bufferedWriter.close();
+            }
         }catch (Exception e){
             System.err.println("An error has occurred");
         }

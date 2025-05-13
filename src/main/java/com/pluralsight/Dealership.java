@@ -38,7 +38,7 @@ public class Dealership {
     public ArrayList<Vehicle>  getVehicleByMakeModel(String make, String model){
         ArrayList<Vehicle> results = new ArrayList<>();
         for (Vehicle vehicle : inventory) {
-            if (vehicle.getMake().equalsIgnoreCase(make) && vehicle.getModel().equalsIgnoreCase(model)){
+            if (vehicle.getMake().equalsIgnoreCase(make) || vehicle.getModel().equalsIgnoreCase(model)){
                 results.add(vehicle);
             }
         }return results;
@@ -74,7 +74,7 @@ public class Dealership {
             results.add(vehicle);
         }return results;
     }
-    public ArrayList<Vehicle> getAllVehicle(){
+    public ArrayList<Vehicle> getAllVehicles(){
         ArrayList<Vehicle> results = new ArrayList<>();
         for (Vehicle vehicle : inventory) {
             results.add(vehicle);

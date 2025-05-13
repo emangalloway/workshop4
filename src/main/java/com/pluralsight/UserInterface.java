@@ -13,7 +13,7 @@ public class UserInterface {
         DealershipFileManager dfm = new DealershipFileManager();
         this.dealership = dfm.getDealership();
     }
-        private void display () {
+        public void display () {
             init();
             Scanner scanner = new Scanner(System.in);
             boolean running = true;
@@ -75,9 +75,10 @@ public class UserInterface {
 
             }
         }
-        private void displayVehicle () {
-            for (Vehicle vehicle : inventory) {
-                System.out.println(vehicle);
+        private void displayVehicle (ArrayList<Vehicle> results) {
+            System.out.println("Vehicles found: "+results.size());
+            for (Vehicle result : results) {
+                System.out.println(result);
             }
         }
         private void processGetByPriceRequest () {
@@ -85,41 +86,43 @@ public class UserInterface {
             double minPriceInput = scanner.nextDouble();
             System.out.println("Enter a max price: ");
             double maxPriceInput = scanner.nextDouble();
-            dealership.getVehicleByPrice(minPriceInput, maxPriceInput);
+            displayVehicle(dealership.getVehicleByPrice(minPriceInput,maxPriceInput));
+
         }
         private void processGetByMakeModelRequest () {
-            System.out.println("Enter make/model to find vehicles in inventory: ");
+            System.out.println("Enter make to find vehicles in inventory: ");
             String makeInput = scanner.nextLine();
+            System.out.println("Enter model to find vehicles in inventory: ");
             String modelInput = scanner.nextLine();
-            dealership.getVehicleByMakeModel(makeInput,modelInput);
+            displayVehicle(dealership.getVehicleByMakeModel(makeInput,modelInput));
         }
         private void processGetByYearRequest () {
             System.out.println("Enter Year you want to start from: ");
             int startYear = scanner.nextInt();
             System.out.println("Enter year you want to stop at: ");
             int endYear = scanner.nextInt();
-            dealership.getVehicleByYear(startYear,endYear);
+            displayVehicle(dealership.getVehicleByYear(startYear,endYear));
         }
         private void processGetByColorRequest () {
             System.out.println("Enter color of vehicle: ");
             String color = scanner.nextLine();
-            dealership.getVehicleByColor(color);
+            displayVehicle(dealership.getVehicleByColor(color));
         }
         private void processGetByMileageRequest () {
             System.out.println("Enter minimum mileage: ");
             double minMile = scanner.nextDouble();
             System.out.println("Enter max mileage: ");
             double maxMile = scanner.nextDouble();
-            dealership.getVehicleByMileage(minMile,maxMile);
+            displayVehicle(dealership.getVehicleByMileage(minMile,maxMile));
         }
         private void processGetByVehicleTypeRequest () {
             System.out.println("Enter vehicle Type (Car,Truck,SUV,van): ");
             String type = scanner.nextLine();
-            dealership.getVehicleByType(type);
+            displayVehicle(dealership.getVehicleByType(type));
         }
         private void processGetAllVehiclesRequest () {
             System.out.println("Fetching All Vehicles in inventory....");
-            dealership.getAllVehicle();
+            displayVehicle(dealership.getAllVehicles());
         }
         private void processAddVehicleRequest () {
             System.out.println("Adding new vehicle");
